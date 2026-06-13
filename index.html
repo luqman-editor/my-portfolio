@@ -935,10 +935,197 @@
     to { top: 100%; }
   }
 
+  /* ─── SCROLL PROGRESS BAR ───────────────────────── */
+  #progress-bar {
+    position: fixed;
+    top: 0; left: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--green), var(--green-text));
+    z-index: 200;
+    width: 0%;
+    transition: width 0.1s linear;
+    box-shadow: 0 0 8px rgba(29,185,84,0.6);
+  }
+
+  /* ─── CURSOR GLOW ────────────────────────────────── */
+  #cursor-glow {
+    position: fixed;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(29,185,84,0.06) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 1;
+    transform: translate(-50%, -50%);
+    transition: left 0.08s ease, top 0.08s ease;
+  }
+
+  /* ─── BACK TO TOP ─────────────────────────────────── */
+  #back-top {
+    position: fixed;
+    bottom: 32px; right: 32px;
+    width: 44px; height: 44px;
+    background: var(--card);
+    border: 1px solid var(--green);
+    color: var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 100;
+    font-size: 1.1rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s;
+    clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+  }
+  #back-top.visible { opacity: 1; pointer-events: all; }
+  #back-top:hover { background: var(--green); color: #000; box-shadow: 0 0 24px rgba(29,185,84,0.4); }
+
+  /* ─── MOBILE HAMBURGER ───────────────────────────── */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+    background: none;
+    border: none;
+    z-index: 110;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--green);
+    transition: all 0.3s;
+    transform-origin: center;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(6,10,7,0.97);
+    backdrop-filter: blur(20px);
+    z-index: 105;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3rem;
+    letter-spacing: 4px;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .mobile-menu a:hover { color: var(--green); }
+
+  /* ─── ACTIVE NAV ─────────────────────────────────── */
+  .nav-links a.active { color: var(--green); }
+
+  /* ─── TYPING CURSOR ──────────────────────────────── */
+  .typing-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1em;
+    background: var(--green);
+    margin-left: 3px;
+    vertical-align: middle;
+    animation: blink 0.8s step-end infinite;
+  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+  /* ─── FILMSTRIP ABOUT FRAME ──────────────────────── */
+  .filmstrip-wrap {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0;
+  }
+  .filmstrip-row {
+    display: flex;
+    gap: 0;
+    animation: filmScroll 12s linear infinite;
+  }
+  .filmstrip-row:nth-child(2) { animation-direction: reverse; animation-duration: 16s; }
+  .filmstrip-row:nth-child(3) { animation-duration: 10s; }
+  @keyframes filmScroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .film-hole-row {
+    display: flex;
+    gap: 0;
+    animation: filmScroll 12s linear infinite;
+  }
+  .film-hole-row:nth-child(1) { margin-bottom: 6px; }
+  .film-frame {
+    width: 80px;
+    height: 56px;
+    flex-shrink: 0;
+    border: 1px solid rgba(29,185,84,0.2);
+    background: rgba(29,185,84,0.03);
+    margin: 2px;
+    position: relative;
+    overflow: hidden;
+  }
+  .film-frame::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(29,185,84,0.08), transparent);
+  }
+  .film-frame-label {
+    position: absolute;
+    bottom: 4px; left: 5px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.45rem;
+    color: rgba(29,185,84,0.4);
+    letter-spacing: 1px;
+  }
+  .film-center-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    background: linear-gradient(to right, var(--card), transparent 20%, transparent 80%, var(--card));
+  }
+  .film-name-big {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 4px;
+    color: var(--green);
+    text-shadow: 0 0 20px rgba(29,185,84,0.5);
+  }
+  .film-name-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--muted);
+    letter-spacing: 3px;
+    margin-top: 6px;
+  }
+
   /* ─── RESPONSIVE ─────────────────────────────────── */
   @media (max-width: 768px) {
     nav { padding: 16px 24px; }
     .nav-links { display: none; }
+    .hamburger { display: flex; }
     section, .ig-section, #tools { padding: 64px 24px; }
     .hero { padding: 0 24px; }
     .hero-name { font-size: 4.5rem; }
@@ -947,10 +1134,25 @@
     .work-col-portrait, .work-col-landscape { width: 100%; }
     .process-list { grid-template-columns: 1fr; }
     footer { flex-direction: column; gap: 12px; text-align: center; }
+    #cursor-glow { display: none; }
+    #back-top { bottom: 20px; right: 20px; }
   }
 </style>
 </head>
 <body>
+
+<div id="progress-bar"></div>
+<div id="cursor-glow"></div>
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</button>
+
+<!-- ─── MOBILE MENU ───────────────────────────────────── -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#tools" onclick="closeMobile()">Tools</a>
+  <a href="#work" onclick="closeMobile()">Work</a>
+  <a href="#pages" onclick="closeMobile()">Pages</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+</div>
 
 <!-- ─── NAV ─────────────────────────────────────────── -->
 <nav>
@@ -962,6 +1164,9 @@
     <li><a href="#pages">Pages</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+  <button class="hamburger" id="hamburger" onclick="toggleMobile()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- ─── HERO ─────────────────────────────────────────── -->
@@ -973,7 +1178,7 @@
     <h1 class="hero-name">
       MOHAMED<br><span>LUQMAN</span>
     </h1>
-    <p class="hero-title">Video Editor &nbsp;·&nbsp; DaVinci Resolve &nbsp;·&nbsp; Short-Form Content</p>
+    <p class="hero-title"><span id="typed-role">Video Editor</span><span class="typing-cursor"></span></p>
     <p class="hero-desc">
       I craft short-form reels and social content with sharp cuts, intentional color, and stories that stop the scroll — using DaVinci Resolve and a toolkit of AI-powered tools.
     </p>
@@ -998,9 +1203,11 @@
         <div class="corner-accent tr"></div>
         <div class="corner-accent bl"></div>
         <div class="corner-accent br"></div>
-        <div class="about-frame-inner">
-          <span class="camera-icon">🎬</span>
-          <!-- <p>[ YOUR PHOTO HERE ]</p> -->
+        <!-- Animated filmstrip -->
+        <div class="filmstrip-wrap" id="filmstrip"></div>
+        <div class="film-center-overlay">
+          <div class="film-name-big">LUQMAN</div>
+          <div class="film-name-sub">VIDEO EDITOR</div>
         </div>
       </div>
       <div class="about-stats">
@@ -1123,7 +1330,6 @@
   <div class="work-filters">
     <button class="filter-btn active" onclick="filterWork(this,'all')">All</button>
     <button class="filter-btn" onclick="filterWork(this,'reel')">Reels</button>
-    <button class="filter-btn" onclick="filterWork(this,'color')">Color Grade</button>
     <button class="filter-btn" onclick="filterWork(this,'motion')">Motion GFX</button>
     <button class="filter-btn" onclick="filterWork(this,'longform')">Long-Form</button>
   </div>
@@ -1136,6 +1342,16 @@
       <div class="work-card" data-cat="reel" style="cursor:default;">
         <div class="work-thumb ar-9-16">
           <iframe src="https://youtube.com/embed/VwyG52McDSk?feature=share"
+            allow="autoplay" allowfullscreen></iframe>
+        </div>
+        <div class="work-cat-bar">
+          <div class="work-cat-dot"></div>
+          <span class="work-cat-label">Reel · Lifestyle</span>
+        </div>
+      </div>
+       <div class="work-card" data-cat="reel" style="cursor:default;">
+        <div class="work-thumb ar-9-16">
+          <iframe src="https://youtube.com/embed/XEOdg2u4a6M?feature=share"
             allow="autoplay" allowfullscreen></iframe>
         </div>
         <div class="work-cat-bar">
@@ -1205,7 +1421,7 @@
 
 
   <!-- ─── LONG FORM ─── -->
-  <div class="longform-section">
+  <div class="longform-section" style="grid-column: 1 / -1;">
     <div class="longform-header">
       <div class="longform-title">Long-Form Video</div>
       <div class="longform-badge">1 Project</div>
@@ -1323,38 +1539,107 @@
 </footer>
 
 <script>
-  // Work filter
+  /* ─── WORK FILTER ─── */
   function filterWork(btn, cat) {
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    // filter individual cards
     document.querySelectorAll('.work-card').forEach(card => {
-      if (cat === 'all' || card.dataset.cat === cat) {
-        card.style.display = '';
-      } else {
-        card.style.display = 'none';
-      }
+      card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none';
     });
-    // hide empty columns
     document.querySelectorAll('.work-col-portrait, .work-col-landscape').forEach(col => {
       const visible = col.querySelectorAll('.work-card:not([style*="display: none"])');
       col.style.display = visible.length === 0 ? 'none' : '';
     });
-    // show/hide longform section
     const lf = document.querySelector('.longform-section');
     if (lf) lf.style.display = (cat === 'all' || cat === 'longform') ? '' : 'none';
   }
 
-  // Open video link
-  function openVideo(url) {
-    if (url && url !== '[PASTE YOUR VIDEO LINK HERE]') {
-      window.open(url, '_blank');
-    } else {
-      alert('Replace [PASTE YOUR VIDEO LINK HERE] with your actual video URL (e.g. Instagram reel, Google Drive, YouTube link).');
-    }
+  /* ─── SCROLL PROGRESS BAR ─── */
+  window.addEventListener('scroll', () => {
+    const bar = document.getElementById('progress-bar');
+    const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+    bar.style.width = pct + '%';
+
+    // Back to top
+    const bt = document.getElementById('back-top');
+    bt.classList.toggle('visible', window.scrollY > 400);
+
+    // Active nav
+    const sections = ['about','tools','work','pages','process','contact'];
+    let current = '';
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && window.scrollY >= el.offsetTop - 100) current = id;
+    });
+    document.querySelectorAll('.nav-links a').forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  });
+
+  /* ─── CURSOR GLOW ─── */
+  const glow = document.getElementById('cursor-glow');
+  document.addEventListener('mousemove', e => {
+    glow.style.left = e.clientX + 'px';
+    glow.style.top = e.clientY + 'px';
+  });
+
+  /* ─── MOBILE MENU ─── */
+  function toggleMobile() {
+    const menu = document.getElementById('mobileMenu');
+    const ham = document.getElementById('hamburger');
+    menu.classList.toggle('open');
+    ham.classList.toggle('open');
+    document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+  }
+  function closeMobile() {
+    document.getElementById('mobileMenu').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+    document.body.style.overflow = '';
   }
 
-  // Scroll reveal
+  /* ─── TYPING ANIMATION ─── */
+  const roles = [
+    'Video Editor',
+    'DaVinci Resolve',
+    'Short-Form Content',
+    'Color Grading',
+    'Reel Specialist',
+    'Motion Graphics'
+  ];
+  let roleIdx = 0, charIdx = 0, deleting = false;
+  const typedEl = document.getElementById('typed-role');
+  function typeLoop() {
+    const word = roles[roleIdx];
+    if (!deleting) {
+      typedEl.textContent = word.slice(0, ++charIdx);
+      if (charIdx === word.length) { deleting = true; setTimeout(typeLoop, 1800); return; }
+    } else {
+      typedEl.textContent = word.slice(0, --charIdx);
+      if (charIdx === 0) { deleting = false; roleIdx = (roleIdx + 1) % roles.length; }
+    }
+    setTimeout(typeLoop, deleting ? 50 : 90);
+  }
+  setTimeout(typeLoop, 1200);
+
+  /* ─── FILMSTRIP ─── */
+  const labels = ['CUT','CLR','VFX','SFX','GFX','MIX','DUB','EXP'];
+  const fs = document.getElementById('filmstrip');
+  for (let r = 0; r < 3; r++) {
+    const row = document.createElement('div');
+    row.className = 'filmstrip-row';
+    // duplicate for seamless loop
+    for (let pass = 0; pass < 2; pass++) {
+      for (let f = 0; f < 8; f++) {
+        const fr = document.createElement('div');
+        fr.className = 'film-frame';
+        fr.innerHTML = `<span class="film-frame-label">${labels[(f+r)%labels.length]}-${String(f+1).padStart(2,'0')}</span>`;
+        row.appendChild(fr);
+      }
+    }
+    fs.appendChild(row);
+  }
+
+  /* ─── SCROLL REVEAL ─── */
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
