@@ -24,7 +24,7 @@ jobs:
       - name: Fetch YouTube playlists and build videos.json
         env:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
-          CHANNEL_ID: ${{ secrets.YOUTUBE_CHANNEL_ID }}
+          YOUTUBE_CHANNEL_ID: ${{ secrets.YOUTUBE_CHANNEL_ID }}
         run: python fetch_videos.py
 
       - name: Commit and push if videos.json changed
