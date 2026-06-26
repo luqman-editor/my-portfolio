@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All Work — Mohamed Luqman</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root{--black:#060a07;--deep:#0a110c;--card:#0f1a12;--border:#1c3323;--green:#1db954;--green-glow:rgba(29,185,84,0.15);--green-text:#5dde8a;--muted:#4a7a5a;--text:#c8e8d2;--white:#edfbf2}
+  *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+  body{background:var(--black);color:var(--text);font-family:'Syne',sans-serif;overflow-x:hidden}
+  body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:999;opacity:.4}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:18px 48px;background:rgba(6,10,7,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+  .nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:3px;color:var(--green);text-decoration:none}
+  .nav-back{color:var(--muted);text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:2px;text-transform:uppercase;transition:color .2s}
+  .nav-back:hover{color:var(--green)}
+
+  .page-header{padding:140px 48px 50px;max-width:1300px;margin:0 auto;border-bottom:1px solid var(--border)}
+  .page-label{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--green);letter-spacing:4px;text-transform:uppercase;display:flex;align-items:center;gap:12px;margin-bottom:12px}
+  .page-label::before{content:'';width:32px;height:1px;background:var(--green)}
+  .page-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,8vw,6rem);letter-spacing:4px;color:var(--white);line-height:1}
+  .page-title span{color:var(--green)}
+  .page-meta{display:flex;gap:16px;margin-top:20px;flex-wrap:wrap}
+  .meta-pill{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--muted);border:1px solid var(--border);padding:5px 14px;letter-spacing:2px;text-transform:uppercase}
+  .meta-pill.green{color:var(--green);border-color:var(--green)}
+
+  /* STICKY FILTER */
+  .filter-bar{position:sticky;top:64px;z-index:90;background:rgba(6,10,7,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:14px 48px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .filter-label{font-family:'JetBrains Mono',monospace;font-size:.6rem;color:var(--muted);letter-spacing:3px;text-transform:uppercase;margin-right:4px}
+  .filter-btn{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:2px;text-transform:uppercase;border:1px solid var(--border);background:transparent;color:var(--muted);padding:7px 18px;cursor:pointer;transition:all .2s}
+  .filter-btn:hover,.filter-btn.active{border-color:var(--green);color:var(--green);background:var(--green-glow)}
+
+  .content{max-width:1300px;margin:0 auto;padding:60px 48px 120px}
+
+  /* LOADING */
+  .loading{text-align:center;padding:80px 0}
+  .loading-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--green);margin:0 4px;animation:blink 1.2s infinite}
+  .loading-dot:nth-child(2){animation-delay:.2s}
+  .loading-dot:nth-child(3){animation-delay:.4s}
+  @keyframes blink{0%,100%{opacity:.2}50%{opacity:1}}
+
+  /* ERROR */
+  .error-box{background:var(--card);border:1px dashed var(--border);padding:40px;text-align:center;margin:40px 0}
+  .error-box h3{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--muted);letter-spacing:2px;margin-bottom:10px}
+  .error-box p{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--muted);line-height:1.8}
+  .error-box code{color:var(--green)}
+
+  /* CATEGORY BLOCK */
+  .cat-block{margin-bottom:80px;opacity:0;transform:translateY(20px);transition:opacity .4s ease,transform .4s ease}
+  .cat-block.visible{opacity:1;transform:translateY(0)}
+  .cat-header{display:flex;align-items:center;gap:16px;margin-bottom:28px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+  .cat-icon{font-size:1.4rem}
+  .cat-title{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:3px;color:var(--white)}
+  .cat-count{font-family:'JetBrains Mono',monospace;font-size:.6rem;color:var(--green);border:1px solid var(--green);padding:3px 10px;letter-spacing:2px}
+  .cat-tags{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+  .cat-tag{font-family:'JetBrains Mono',monospace;font-size:.58rem;color:var(--muted);border:1px solid var(--border);padding:2px 8px;letter-spacing:1px}
+
+  /* VIDEO GRIDS */
+  .grid-portrait{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px}
+  .grid-landscape{display:grid;grid-template-columns:repeat(auto-fill,minmax(400px,1fr));gap:14px}
+
+  /* VIDEO CARD */
+  .vid-card{background:var(--card);border:1px solid var(--border);overflow:hidden;transition:border-color .25s,transform .25s,box-shadow .25s}
+  .vid-card:hover{border-color:var(--green);transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.6)}
+  .vid-thumb{width:100%;overflow:hidden;background:var(--deep);position:relative}
+  .vid-thumb.portrait{aspect-ratio:9/16}
+  .vid-thumb.landscape{aspect-ratio:16/9}
+  .vid-thumb iframe{position:absolute;inset:0;width:100%;height:100%;border:none;display:block}
+  .vid-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .vid-info{padding:10px 14px;border-top:1px solid var(--border);display:flex;align-items:center;gap:8px}
+  .vid-dot{width:5px;height:5px;border-radius:50%;background:var(--green);flex-shrink:0}
+  .vid-label{font-family:'JetBrains Mono',monospace;font-size:.6rem;color:var(--green);letter-spacing:1.5px;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+  /* UPDATED TAG */
+  .updated-tag{font-family:'JetBrains Mono',monospace;font-size:.6rem;color:var(--muted);letter-spacing:2px}
+
+  /* FOOTER */
+  .page-footer{border-top:1px solid var(--border);padding:28px 48px;display:flex;justify-content:space-between;align-items:center}
+  .footer-logo{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:3px;color:var(--green)}
+  .footer-copy{font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--muted);letter-spacing:2px}
+  .footer-back{font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--green);text-decoration:none;letter-spacing:2px;border:1px solid var(--green);padding:6px 16px;transition:background .2s}
+  .footer-back:hover{background:var(--green-glow)}
+
+  @media(max-width:900px){
+    nav,.filter-bar,.page-header,.content,.page-footer{padding-left:20px;padding-right:20px}
+    .grid-portrait{grid-template-columns:repeat(2,1fr)}
+    .grid-landscape{grid-template-columns:1fr}
+    .cat-tags{display:none}
+    .page-footer{flex-direction:column;gap:14px;text-align:center}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Luqman — Editor</a>
+  <a href="index.html" class="nav-back">← Back to Portfolio</a>
+</nav>
+
+<div class="page-header">
+  <div class="page-label">Full Archive</div>
+  <h1 class="page-title">All <span>Work</span></h1>
+  <div class="page-meta" id="pageMeta">
+    <span class="meta-pill">Loading...</span>
+  </div>
+</div>
+
+<div class="filter-bar" id="filterBar">
+  <span class="filter-label">Filter ·</span>
+  <button class="filter-btn active" onclick="filterCat(this,'all')">All</button>
+  <!-- Category buttons injected dynamically -->
+</div>
+
+<div class="content" id="content">
+  <div class="loading">
+    <div class="loading-dot"></div>
+    <div class="loading-dot"></div>
+    <div class="loading-dot"></div>
+  </div>
+</div>
+
+<div class="page-footer">
+  <div class="footer-logo">Mohamed Luqman</div>
+  <a href="index.html" class="footer-back">← Back to Portfolio</a>
+  <div class="footer-copy">© 2025 · Open to Work · mohamedluqman396@gmail.com</div>
+</div>
+
+<script>
+// ── Category icon map (matches playlist name keywords) ───────────────────────
+const ICONS = {
+  tech:'💻', religious:'🕌', comedy:'😄', gaming:'🎮',
+  informative:'📚', documentary:'🎞️', promotion:'📣', promotions:'📣',
+  lifestyle:'✨', motion:'🎨', longform:'🎬', 'long-form':'🎬', 'long form':'🎬',
+  music:'🎵', motivation:'🔥', cinematic:'🎥', education:'🎓', event:'🎉',
+};
+
+function getIcon(name) {
+  const lower = name.toLowerCase();
+  for (const [key, icon] of Object.entries(ICONS)) {
+    if (lower.includes(key)) return icon;
+  }
+  return '▶️';
+}
+
+// Is this category "long-form"? (landscape 16:9 grid)
+function isLongForm(name) {
+  return ['long-form','longform','long form','documentary'].some(k => name.toLowerCase().includes(k));
+}
+
+// ── Render everything ────────────────────────────────────────────────────────
+async function loadVideos() {
+  const content   = document.getElementById('content');
+  const filterBar = document.getElementById('filterBar');
+  const pageMeta  = document.getElementById('pageMeta');
+
+  let data;
+  try {
+    // Cache-bust so GitHub Pages always serves fresh JSON
+    const res = await fetch('videos.json?v=' + Date.now());
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    data = await res.json();
+  } catch (err) {
+    content.innerHTML = `
+      <div class="error-box">
+        <h3>Videos Not Loaded Yet</h3>
+        <p>Run the GitHub Action to generate <code>videos.json</code>.<br>
+        Go to your repo → <strong>Actions</strong> → <strong>Update Videos from YouTube</strong> → <strong>Run workflow</strong>.<br><br>
+        Error: ${err.message}</p>
+      </div>`;
+    return;
+  }
+
+  const cats  = data.categories || [];
+  const total = cats.reduce((s, c) => s + c.videos.length, 0);
+
+  // Meta pills
+  pageMeta.innerHTML = `
+    <span class="meta-pill green">${total} Videos</span>
+    <span class="meta-pill">${cats.length} Categories</span>
+    <span class="meta-pill">Updated ${data.updated}</span>
+    <span class="meta-pill">DaVinci Resolve · Swish AI · Panzoid</span>`;
+
+  // Filter buttons
+  cats.forEach(cat => {
+    const btn = document.createElement('button');
+    btn.className = 'filter-btn';
+    btn.textContent = `${getIcon(cat.name)} ${cat.name}`;
+    btn.onclick = () => filterCat(btn, cat.slug);
+    filterBar.appendChild(btn);
+  });
+
+  // Category blocks
+  content.innerHTML = '';
+  cats.forEach(cat => {
+    const landscape = isLongForm(cat.name);
+    const gridClass = landscape ? 'grid-landscape' : 'grid-portrait';
+    const thumbClass = landscape ? 'landscape' : 'portrait';
+
+    const videosHTML = cat.videos.map(v => `
+      <div class="vid-card">
+        <div class="vid-thumb ${thumbClass}">
+          <iframe src="${v.embed}" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="vid-info">
+          <div class="vid-dot"></div>
+          <span class="vid-label">${v.title}</span>
+        </div>
+      </div>`).join('');
+
+    const block = document.createElement('div');
+    block.className = 'cat-block';
+    block.dataset.cat = cat.slug;
+    block.id = 'cat-' + cat.slug;
+    block.innerHTML = `
+      <div class="cat-header">
+        <div class="cat-icon">${getIcon(cat.name)}</div>
+        <div class="cat-title">${cat.name}</div>
+        <div class="cat-count">${cat.videos.length} Video${cat.videos.length !== 1 ? 's' : ''}</div>
+      </div>
+      <div class="${gridClass}">${videosHTML}</div>`;
+    content.appendChild(block);
+
+    // Reveal on scroll
+    const obs = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) { block.classList.add('visible'); obs.disconnect(); }
+    }, { threshold: 0.05 });
+    obs.observe(block);
+  });
+
+  // Handle #cat-xxx hash in URL (from index.html anchor link)
+  if (location.hash && location.hash.startsWith('#cat-')) {
+    const slug = location.hash.replace('#cat-', '');
+    const btn  = [...filterBar.querySelectorAll('.filter-btn')]
+                   .find(b => b.textContent.toLowerCase().includes(slug));
+    if (btn) setTimeout(() => filterCat(btn, slug), 200);
+  }
+}
+
+// ── Filter ───────────────────────────────────────────────────────────────────
+function filterCat(btn, cat) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  document.querySelectorAll('.cat-block').forEach(block => {
+    const show = cat === 'all' || block.dataset.cat === cat;
+    block.style.display = show ? '' : 'none';
+    if (show && cat !== 'all') {
+      setTimeout(() => block.scrollIntoView({ behavior: 'smooth', block: 'start' }), 60);
+    }
+  });
+}
+
+loadVideos();
+</script>
+</body>
+</html>
