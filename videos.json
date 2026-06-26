@@ -1,4 +1,23 @@
 {
-  "updated": "2025-01-01",
-  "categories": []
+  "updated": "2026-06-26",
+  "categories": [
+    {
+      "id": "PLK-j83CDsk6Y",
+      "name": "Informative",
+      "emoji": "📚",
+      "slug": "informative",
+      "count": 1,
+      "videos": [
+        {
+          "id": "ZiBjJnQTVvE",
+          "title": "Final Output  Ixora clinic",
+          "description": "#dance #viral #ytshort #shorts #song #music #beautiful #explorepage #trending #explore #love #kashu #trend #viralshorts ",
+          "thumbnail": "https://i.ytimg.com/vi/ZiBjJnQTVvE/hqdefault.jpg",
+          "published": "2026-06-26",
+          "embed": "https://www.youtube.com/embed/ZiBjJnQTVvE",
+          "url": "https://www.youtube.com/shorts/ZiBjJnQTVvE"
+        }
+      ]
+    }
+  ]
 }
