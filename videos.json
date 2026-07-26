@@ -6,8 +6,17 @@
       "name": "Informative",
       "emoji": "📚",
       "slug": "informative",
-      "count": 1,
+      "count": 2,
       "videos": [
+        {
+          "id": "XmLyiezl45k",
+          "title": "Second for the same client",
+          "description": "",
+          "thumbnail": "https://i.ytimg.com/vi/XmLyiezl45k/hqdefault.jpg",
+          "published": "2026-07-26",
+          "embed": "https://www.youtube.com/embed/XmLyiezl45k",
+          "url": "https://www.youtube.com/shorts/XmLyiezl45k"
+        },
         {
           "id": "ZiBjJnQTVvE",
           "title": "Final Output  Ixora clinic",
