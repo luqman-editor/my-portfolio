@@ -2,6 +2,24 @@
   "updated": "2026-08-30",
   "categories": [
     {
+      "id": "PLLxSaouRxN44",
+      "name": "Real Estate",
+      "emoji": "▶️",
+      "slug": "real-estate",
+      "count": 1,
+      "videos": [
+        {
+          "id": "cGz7cW6yQHY",
+          "title": "Real  estate video edit for a client",
+          "description": "Real  estate video edit for a client",
+          "thumbnail": "https://i.ytimg.com/vi/cGz7cW6yQHY/hqdefault.jpg",
+          "published": "2026-08-30",
+          "embed": "https://www.youtube.com/embed/cGz7cW6yQHY",
+          "url": "https://www.youtube.com/shorts/cGz7cW6yQHY"
+        }
+      ]
+    },
+    {
       "id": "PLK-j83CDsk6Y",
       "name": "Informative",
       "emoji": "📚",
