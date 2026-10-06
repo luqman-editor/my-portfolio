@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-05",
+  "updated": "2026-10-06",
   "categories": [
     {
       "id": "PLLxSaouRxN44",
@@ -24,7 +24,7 @@
       "name": "Informative",
       "emoji": "📚",
       "slug": "informative",
-      "count": 2,
+      "count": 3,
       "videos": [
         {
           "id": "XmLyiezl45k",
@@ -43,6 +43,15 @@
           "published": "2026-06-26",
           "embed": "https://www.youtube.com/embed/ZiBjJnQTVvE",
           "url": "https://www.youtube.com/shorts/ZiBjJnQTVvE"
+        },
+        {
+          "id": "aRF67MGD6ig",
+          "title": "Fillers treatment explanation video for the client #editing #davinciresolve #edit",
+          "description": "",
+          "thumbnail": "https://i.ytimg.com/vi/aRF67MGD6ig/hqdefault.jpg",
+          "published": "2026-10-05",
+          "embed": "https://www.youtube.com/embed/aRF67MGD6ig",
+          "url": "https://www.youtube.com/shorts/aRF67MGD6ig"
         }
       ]
     }
