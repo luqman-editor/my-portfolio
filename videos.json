@@ -1,33 +1,6 @@
 {
-  "updated": "2026-10-21",
+  "updated": "2026-10-22",
   "categories": [
-    {
-      "id": "PLJas8ACpBOqg",
-      "name": "ovp_cuts(shorts)",
-      "emoji": "▶️",
-      "slug": "ovp_cuts(shorts)",
-      "count": 2,
-      "videos": [
-        {
-          "id": "JIWKBWOlY_k",
-          "title": "Davinici tips",
-          "description": "#editing #davinci #tamilediting",
-          "thumbnail": "https://i.ytimg.com/vi/JIWKBWOlY_k/hqdefault.jpg",
-          "published": "2026-10-11",
-          "embed": "https://www.youtube.com/embed/JIWKBWOlY_k",
-          "url": "https://www.youtube.com/shorts/JIWKBWOlY_k"
-        },
-        {
-          "id": "1uoyy_HCZQU",
-          "title": "How to extract the audio from videro instantly #editing #davinciresolve #tamilcontent",
-          "description": "How to extract the audio from videro instantly #editing #davinciresolve #tamilcontent",
-          "thumbnail": "https://i.ytimg.com/vi/1uoyy_HCZQU/hqdefault.jpg",
-          "published": "2026-10-11",
-          "embed": "https://www.youtube.com/embed/1uoyy_HCZQU",
-          "url": "https://www.youtube.com/shorts/1uoyy_HCZQU"
-        }
-      ]
-    },
     {
       "id": "PLLxSaouRxN44",
       "name": "Real Estate",
