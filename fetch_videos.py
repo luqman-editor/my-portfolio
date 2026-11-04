@@ -35,7 +35,8 @@ EMOJI_MAP = {
     "cinematic":   "🎥",
     "education":   "🎓",
     "event":       "🎉",
-    "realestate":  "🏠",
+    "ai motion graphic": "🤖",
+    "real estate":  "🏠",
 }
 
 def get_emoji(name):
