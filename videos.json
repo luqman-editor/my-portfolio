@@ -2,6 +2,42 @@
   "updated": "2026-11-04",
   "categories": [
     {
+      "id": "PLCkeVi6r5sNY",
+      "name": "AI MOTION VIDEO",
+      "emoji": "🎨",
+      "slug": "ai-motion-video",
+      "count": 3,
+      "videos": [
+        {
+          "id": "GzB15i31CyE",
+          "title": "AI MOTION VIDEO EDIT #editing #claudecode",
+          "description": "",
+          "thumbnail": "https://i.ytimg.com/vi/GzB15i31CyE/hqdefault.jpg",
+          "published": "2026-11-04",
+          "embed": "https://www.youtube.com/embed/GzB15i31CyE",
+          "url": "https://www.youtube.com/shorts/GzB15i31CyE"
+        },
+        {
+          "id": "cvTqpzqJMX0",
+          "title": "Private video",
+          "description": "This video is private.",
+          "thumbnail": "",
+          "published": "2026-11-04",
+          "embed": "https://www.youtube.com/embed/cvTqpzqJMX0",
+          "url": "https://www.youtube.com/shorts/cvTqpzqJMX0"
+        },
+        {
+          "id": "5VBWMChJ3yQ",
+          "title": "Agent room client sample #editng #aimotiongraphics #claudecode",
+          "description": "Today I learned how we can edit wtih claude just by prompts but still it is not something more professional \n\nhere is th",
+          "thumbnail": "https://i.ytimg.com/vi/5VBWMChJ3yQ/hqdefault.jpg",
+          "published": "2026-11-04",
+          "embed": "https://www.youtube.com/embed/5VBWMChJ3yQ",
+          "url": "https://www.youtube.com/shorts/5VBWMChJ3yQ"
+        }
+      ]
+    },
+    {
       "id": "PLctyyaFBDtPk",
       "name": "Product Review",
       "emoji": "▶️",
