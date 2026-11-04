@@ -6,7 +6,7 @@
       "name": "AI MOTION VIDEO",
       "emoji": "🎨",
       "slug": "ai-motion-video",
-      "count": 3,
+      "count": 2,
       "videos": [
         {
           "id": "GzB15i31CyE",
@@ -16,15 +16,6 @@
           "published": "2026-11-04",
           "embed": "https://www.youtube.com/embed/GzB15i31CyE",
           "url": "https://www.youtube.com/shorts/GzB15i31CyE"
-        },
-        {
-          "id": "cvTqpzqJMX0",
-          "title": "Private video",
-          "description": "This video is private.",
-          "thumbnail": "",
-          "published": "2026-11-04",
-          "embed": "https://www.youtube.com/embed/cvTqpzqJMX0",
-          "url": "https://www.youtube.com/shorts/cvTqpzqJMX0"
         },
         {
           "id": "5VBWMChJ3yQ",
@@ -58,7 +49,7 @@
     {
       "id": "PLLxSaouRxN44",
       "name": "Real Estate",
-      "emoji": "▶️",
+      "emoji": "🏠",
       "slug": "real-estate",
       "count": 1,
       "videos": [
